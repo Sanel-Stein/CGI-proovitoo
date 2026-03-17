@@ -1,0 +1,6 @@
+.header {
+    display: flex;
+    background-color: rgb(104, 15, 15);
+    padding: 10px;
+    border-radius: 5px;
+}

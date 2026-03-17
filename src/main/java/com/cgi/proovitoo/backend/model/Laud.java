@@ -17,6 +17,14 @@ public class Laud {
     private boolean aknaAll;
     private boolean lastenurk;
 
+    public Laud(int kohti, String tsoon, boolean privaatne, boolean aknaAll, boolean lastenurk) {
+        this.kohti = kohti;
+        this.tsoon = tsoon;
+        this.privaatne = privaatne;
+        this.aknaAll = aknaAll;
+        this.lastenurk = lastenurk;
+    }
+
     public Long getId() {
         return id;
     }

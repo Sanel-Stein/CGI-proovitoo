@@ -1,0 +1,32 @@
+.plaan {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 20px;
+    margin: 0 auto;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    gap: 16px;
+    margin: 20px;
+}
+
+.laud {
+    width: 80px;
+    height: 80px;
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.hõivatud {
+    background-color: lightcoral;
+}
+.soovitatud {
+    background-color: lightyellow;
+}

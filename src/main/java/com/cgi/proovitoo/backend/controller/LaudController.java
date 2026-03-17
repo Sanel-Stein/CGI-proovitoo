@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/laud")
+@RequestMapping("/api/laud")
 public class LaudController {
     private final LaudService laudService;
 
@@ -16,7 +16,7 @@ public class LaudController {
     }
 
     @GetMapping()
-    public List<Laud> getAlla() {
+    public List<Laud> getLauad() {
         return laudService.getAll();
     }
 
