@@ -4,13 +4,13 @@ export async function getLauad() {
   return res.json()
 }
 
-export async function addLaud(laud) {
-  const res = await fetch(`api/laud`, {
+export async function addBroneering(broneering) {
+  const res = await fetch(`api/broneering`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(laud)
+    body: JSON.stringify(broneering)
   })
   return res.json()
 }

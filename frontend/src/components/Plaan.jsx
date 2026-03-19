@@ -2,17 +2,19 @@ import "./Plaan.css"
 import { useEffect, useState } from "react"
 import { getLauad } from "../services/Api"
 
-function Plaan({ otsinguInfo }) {
+function Plaan({ otsinguInfo, broneering, setBroneering}) {
     const [lauad, setLauad] = useState([])
 
     useEffect(() => {
         getLauad().then(data => {
-        console.log(otsinguInfo)
         const inimesed = Number(otsinguInfo.inimesed);
         const lauadCopy = data.map(l => 
         ({ ...l, hõivatud: Math.random() < 0.3, soovitatud: false }))
         for (const laud of lauadCopy) {
-            if (!laud.hõivatud 
+            if (otsinguInfo.aeg === "") {
+                laud.tühi = true;
+            }
+            else if (!laud.hõivatud 
                 && laud.kohti >= inimesed 
                 && laud.kohti <= inimesed + 3
                 && (otsinguInfo.tsoon === '' 
@@ -22,19 +24,28 @@ function Plaan({ otsinguInfo }) {
             }
 
         setLauad(lauadCopy)} )
-    }, [])
+    }, [otsinguInfo])
+
+    const kuvaValitudInfo = (laud) => {
+        if (!laud.hõivatud && !laud.tühi) {
+        setBroneering({aeg: otsinguInfo.aeg,
+             lauaNr: laud.id,
+             kohti: laud.kohti, 
+             tsoon: laud.tsoon, 
+             privaatne: laud.privaatne, 
+             aknaAll: laud.aknaAll,
+             lastenurk: laud.lastenurk})
+        }
+    }
 
   return (
     <>
     <div className="plaan">
-      <div>
-        <h1>Plaan</h1>
-      </div>
       <div className="grid">
         {lauad.map(l => (
-          <div 
+          <div onClick={() => {kuvaValitudInfo(l)}}
             key={l.id}
-            className={`laud ${l.hõivatud ? "hõivatud" : l.soovitatud ? "soovitatud" : ""}`}>
+            className={`laud ${l.tühi ? "tühi" : l.hõivatud ? "hõivatud" : l.soovitatud ? "soovitatud" : ""}`}>
             {l.kohti}
           </div>
         ))}

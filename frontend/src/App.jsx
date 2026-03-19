@@ -1,33 +1,19 @@
 import './App.css'
-
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
-} from "react-router-dom";
 import { useState } from 'react';
 import Otsing from "./components/Otsing"
 import Plaan from "./components/Plaan";
+import Broneering from './components/Broneering';
 
 function App() {
-  const [otsinguInfo, setOtsinguInfo] = useState({ aeg: "", inimesed: "1", tsoon: "" });
-
+  const [otsinguInfo, setOtsinguInfo] = useState({ aeg: "", inimesed: "1", tsoon: "", privaatne: false, aknaAll: false, lastenurk: false });
+  const [broneering, setBroneering] = useState({aeg: "", lauaNr: "",kohti: "", tsoon: "", privaatne: false, aknaAll: false, lastenurk: false });
+  
   return (
-    <Router>
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={<Otsing otsinguInfo={otsinguInfo} setOtsinguInfo={setOtsinguInfo} />} />
-        <Route
-          path="/plaan"
-          element={<Plaan otsinguInfo={otsinguInfo} />} />
-        <Route
-          path="*"
-          element={<Navigate to="/" />}/>
-      </Routes>
-    </Router>
+    <div className="app">
+      <Otsing otsinguInfo={otsinguInfo} setOtsinguInfo={setOtsinguInfo} />
+      <Plaan otsinguInfo={otsinguInfo} broneering={broneering} setBroneering={setBroneering} />
+      <Broneering broneering={broneering} />
+    </div>
   )
 }
 

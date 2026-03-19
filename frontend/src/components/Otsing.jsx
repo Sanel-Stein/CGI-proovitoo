@@ -1,25 +1,23 @@
 import "./Otsing.css"
-import { useEffect, useState } from "react"
-import { useNavigate } from 'react-router-dom';
-
+import { useState } from "react"
 
 function Otsing({ otsinguInfo, setOtsinguInfo }) {
   const [aeg, setAeg] = useState("")
   const [inimesed, setInimesed] = useState("1")
   const [tsoon, setTsoon] = useState("")
-  const navigate = useNavigate();
+  const [privaatne, setPrivaatne] = useState(false)
+  const [aknaAll, setAknaAll] = useState(false)
+  const [lastenurk, setLastenurk] = useState(false)
 
   const saadaInfo = (e) => {
     e.preventDefault();
-    setOtsinguInfo({ aeg, inimesed, tsoon });
-    navigate("/plaan");
+    setOtsinguInfo({ aeg, inimesed, tsoon, privaatne, aknaAll, lastenurk });
   }
 
   return (
     <div>
       <div>
         <form onSubmit={saadaInfo} className="form">
-          <h1>Otsi lauda</h1>
           <div className="rida">
             <label htmlFor="aeg">Kuupäev ja kellaaeg </label>
             <input type="datetime-local"
@@ -54,6 +52,27 @@ function Otsing({ otsinguInfo, setOtsinguInfo }) {
               <option value="sisesaal">Sisesaal</option>
               <option value="privaatruum">Privaatruum</option>
             </select>
+          </div>
+          <div className="rida">
+            <label>
+              Privaatne <input type="checkbox" 
+                checked={privaatne}
+                onChange={(e) => setPrivaatne(e.target.checked)} />
+            </label>
+          </div>
+          <div className="rida">
+            <label>
+              Akna all <input type="checkbox" 
+                checked={aknaAll}
+                onChange={(e) => setAknaAll(e.target.checked)} />
+            </label>
+          </div>
+          <div className="rida">
+            <label>
+              Lastenurk <input type="checkbox" 
+                checked={lastenurk}
+                onChange={(e) => setLastenurk(e.target.checked)} />
+            </label>
           </div>
           <button type="submit">Otsi</button>
         </form>

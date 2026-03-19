@@ -27,6 +27,6 @@ public class BroneeringController {
 
     @PostMapping()
     public Broneering addBroneering(@RequestBody Broneering broneering) {
-        return  broneeringService.addBroneering(broneering);
+        return broneeringService.addBroneering(broneering);
     }
 }

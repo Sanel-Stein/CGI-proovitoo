@@ -3,26 +3,30 @@ package com.cgi.proovitoo.backend.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
 @Entity
 public class Laud {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int kohti;
+    private Integer kohti;
     private String tsoon;
-    private boolean privaatne;
-    private boolean aknaAll;
-    private boolean lastenurk;
+    private Boolean privaatne;
+    private Boolean aknaAll;
+    private Boolean lastenurk;
 
-    public Laud(int kohti, String tsoon, boolean privaatne, boolean aknaAll, boolean lastenurk) {
+    public Laud(Integer kohti, String tsoon, Boolean privaatne, Boolean aknaAll, Boolean lastenurk) {
         this.kohti = kohti;
         this.tsoon = tsoon;
         this.privaatne = privaatne;
         this.aknaAll = aknaAll;
         this.lastenurk = lastenurk;
+    }
+
+    public Laud() {
     }
 
     public Long getId() {
@@ -33,11 +37,11 @@ public class Laud {
         this.id = id;
     }
 
-    public int getKohti() {
+    public Integer getKohti() {
         return kohti;
     }
 
-    public void setKohti(int kohti) {
+    public void setKohti(Integer kohti) {
         this.kohti = kohti;
     }
 
@@ -49,27 +53,27 @@ public class Laud {
         this.tsoon = tsoon;
     }
 
-    public boolean isPrivaatne() {
+    public Boolean isPrivaatne() {
         return privaatne;
     }
 
-    public void setPrivaatne(boolean privaatne) {
+    public void setPrivaatne(Boolean privaatne) {
         this.privaatne = privaatne;
     }
 
-    public boolean isAknaAll() {
+    public Boolean isAknaAll() {
         return aknaAll;
     }
 
-    public void setAknaAll(boolean aknaAll) {
+    public void setAknaAll(Boolean aknaAll) {
         this.aknaAll = aknaAll;
     }
 
-    public boolean isLastenurk() {
+    public Boolean isLastenurk() {
         return lastenurk;
     }
 
-    public void setLastenurk(boolean lastenurk) {
+    public void setLastenurk(Boolean lastenurk) {
         this.lastenurk = lastenurk;
     }
 }
