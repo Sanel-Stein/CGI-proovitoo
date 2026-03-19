@@ -8,3 +8,6 @@ Alustasin backend'i ülesseadmisega. Lõin objekti-, controller-, service- ja re
 
 ## 17.03.2026
 Alustasin frontend'i arendamisega. Lõin komponendid otsingu tegemiseks ja restorani plaani kuvamiseks. Backend'ist loetakse lauad ja kuvatakse ruudustikus. Igal otsingul genereeritakse suvaliselt hõivatud lauad. Lõin algse laudade soovitamise loogika. ~4h.
+
+## 19.03.2026
+Panin kõik komponendid esilehele ja lisasin ka komponendi, mis kuvab laua informatsiooni kui plaanil lauale klikata. Peale laua valimist on võimalik see broneerida ning broneering salvestatakse andmebaasi. ~4h
