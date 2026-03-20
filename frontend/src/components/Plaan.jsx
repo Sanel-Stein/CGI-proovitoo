@@ -1,29 +1,43 @@
 import "./Plaan.css"
 import { useEffect, useState } from "react"
-import { getLauad } from "../services/Api"
+import { addBroneering, getBroneeringud, getLauad } from "../services/Api"
 
-function Plaan({ otsinguInfo, broneering, setBroneering}) {
+function Plaan({ otsinguInfo, setBroneering}) {
     const [lauad, setLauad] = useState([])
+    const [broneeringud, setBroneeringud] = useState([])
 
     useEffect(() => {
-        getLauad().then(data => {
-        const inimesed = Number(otsinguInfo.inimesed);
-        const lauadCopy = data.map(l => 
-        ({ ...l, hõivatud: Math.random() < 0.3, soovitatud: false }))
-        for (const laud of lauadCopy) {
-            if (otsinguInfo.aeg === "") {
-                laud.tühi = true;
+        const lae = async () => {
+            var broneeringudData = [];
+            if (otsinguInfo.aeg != "") {
+            broneeringudData = await getBroneeringud(otsinguInfo.aeg);
+            setBroneeringud(broneeringudData);
             }
-            else if (!laud.hõivatud 
-                && laud.kohti >= inimesed 
-                && laud.kohti <= inimesed + 3
-                && (otsinguInfo.tsoon === '' 
-                    || laud.tsoon === otsinguInfo.tsoon)) {
-                    laud.soovitatud = true
-                }
-            }
+            const lauadData = await getLauad();
 
-        setLauad(lauadCopy)} )
+
+            const inimesed = Number(otsinguInfo.inimesed);
+            const lauadCopy = lauadData.map(l =>
+                ({ ...l, hõivatud: Math.random() < 0.3, soovitatud: false }));
+            
+            for (const laud of lauadCopy) {
+                if (otsinguInfo.aeg === "") {
+                    laud.tühi = true;
+                }
+                if (broneeringudData.some(b => b.laud.id === laud.id)) {
+                    laud.hõivatud = true;
+                }
+                else if (!laud.hõivatud 
+                    && laud.kohti >= inimesed 
+                    && laud.kohti <= inimesed + 3
+                    && (otsinguInfo.tsoon === '' 
+                        || laud.tsoon === otsinguInfo.tsoon)) {
+                        laud.soovitatud = true
+                    }
+                }
+
+            setLauad(lauadCopy)};
+        lae();
     }, [otsinguInfo])
 
     const kuvaValitudInfo = (laud) => {

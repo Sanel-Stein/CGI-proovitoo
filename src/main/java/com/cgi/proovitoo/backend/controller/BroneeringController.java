@@ -4,6 +4,7 @@ import com.cgi.proovitoo.backend.model.Broneering;
 import com.cgi.proovitoo.backend.service.BroneeringService;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -28,5 +29,10 @@ public class BroneeringController {
     @PostMapping()
     public Broneering addBroneering(@RequestBody Broneering broneering) {
         return broneeringService.addBroneering(broneering);
+    }
+
+    @GetMapping(value = "/otsing")
+    public List<Broneering> getBroneeringud(@RequestParam LocalDateTime broneeringuAlgus) {
+        return broneeringService.getBroneeringud(broneeringuAlgus);
     }
 }

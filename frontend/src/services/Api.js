@@ -4,6 +4,11 @@ export async function getLauad() {
   return res.json()
 }
 
+export async function getBroneeringud(aeg) {
+  const res = await fetch(`api/broneering/otsing?broneeringuAlgus=${aeg}`)
+  return res.json()
+}
+
 export async function addBroneering(broneering) {
   const res = await fetch(`api/broneering`, {
     method: "POST",
