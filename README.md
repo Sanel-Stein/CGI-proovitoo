@@ -11,3 +11,6 @@ Alustasin frontend'i arendamisega. Lõin komponendid otsingu tegemiseks ja resto
 
 ## 19.03.2026
 Panin kõik komponendid esilehele ja lisasin ka komponendi, mis kuvab laua informatsiooni kui plaanil lauale klikata. Peale laua valimist on võimalik see broneerida ning broneering salvestatakse andmebaasi. ~4h
+
+## 20.03.2026
+Lisasin backend'i broneeringute aja järgi otsimise andmebaasist, et saada kõik broneeringud, mis kattuvad valitud ajaga. Frontend'is valides aja võetakse andmebaasist kõik kattuvad broneeringud ja vastavad lauad märgitakse hõivatuks. Mõtlesin pikalt, kas genereerida, peale aja valimist, suvalisi brooneeringuid ja salvestada need andmebaasi, et hiljem oleks hõivatud laudade seis sama, kuid leidsin, et see ei tundu antud kontekstis oluline. ~3h
