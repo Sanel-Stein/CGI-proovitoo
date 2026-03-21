@@ -1,17 +1,15 @@
 import "./Plaan.css"
 import { useEffect, useState } from "react"
-import { addBroneering, getBroneeringud, getLauad } from "../services/Api"
+import { getBroneeringud, getLauad } from "../services/Api"
 
 function Plaan({ otsinguInfo, setBroneering}) {
     const [lauad, setLauad] = useState([])
-    const [broneeringud, setBroneeringud] = useState([])
 
     useEffect(() => {
         const lae = async () => {
-            var broneeringudData = [];
-            if (otsinguInfo.aeg != "") {
+            let broneeringudData = [];
+            if (otsinguInfo.aeg !== "") {
             broneeringudData = await getBroneeringud(otsinguInfo.aeg);
-            setBroneeringud(broneeringudData);
             }
             const lauadData = await getLauad();
 
@@ -28,17 +26,47 @@ function Plaan({ otsinguInfo, setBroneering}) {
                     laud.hõivatud = true;
                 }
                 else if (!laud.hõivatud 
-                    && laud.kohti >= inimesed 
-                    && laud.kohti <= inimesed + 3
-                    && (otsinguInfo.tsoon === '' 
-                        || laud.tsoon === otsinguInfo.tsoon)) {
-                        laud.soovitatud = true
+                    && laud.kohti >= inimesed ) {
+                        const skoor = arvutaSkoor(laud, otsinguInfo);
+                        laud.skoor = skoor;
                     }
                 }
+            
+            let maxSkoor = 0;
+            for (const laud of lauadCopy) {
+                if (laud.skoor > maxSkoor) {
+                    maxSkoor = laud.skoor;
+                }
+            }
+
+            for (const laud of lauadCopy) {
+                if (laud.skoor !== undefined && laud.skoor === maxSkoor) {
+                    laud.soovitatud = true;
+                    break;
+                }
+            }
 
             setLauad(lauadCopy)};
         lae();
     }, [otsinguInfo])
+
+    const arvutaSkoor = (laud, otsinguInfo) => {  
+        let skoor = (8 - (laud.kohti - Number(otsinguInfo.inimesed)))/2;
+        if (otsinguInfo.tsoon === laud.tsoon || otsinguInfo.tsoon === "") {
+            skoor += 2;
+        }
+        if (otsinguInfo.baar === laud.baar) {
+            skoor += 1;
+        }
+        if (otsinguInfo.aknaAll === laud.aknaAll) {
+            skoor += 1;
+        }
+        if (otsinguInfo.lastenurk === laud.lastenurk) {
+            skoor += 1;
+        }
+        return skoor;
+    }
+
 
     const kuvaValitudInfo = (laud) => {
         if (!laud.hõivatud && !laud.tühi) {
@@ -46,7 +74,7 @@ function Plaan({ otsinguInfo, setBroneering}) {
              lauaNr: laud.id,
              kohti: laud.kohti, 
              tsoon: laud.tsoon, 
-             privaatne: laud.privaatne, 
+             baar: laud.baar, 
              aknaAll: laud.aknaAll,
              lastenurk: laud.lastenurk})
         }

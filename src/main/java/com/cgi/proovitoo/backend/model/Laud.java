@@ -14,14 +14,14 @@ public class Laud {
     private Long id;
     private Integer kohti;
     private String tsoon;
-    private Boolean privaatne;
+    private Boolean baariLahedal;
     private Boolean aknaAll;
     private Boolean lastenurk;
 
-    public Laud(Integer kohti, String tsoon, Boolean privaatne, Boolean aknaAll, Boolean lastenurk) {
+    public Laud(Integer kohti, String tsoon, Boolean baariLahedal, Boolean aknaAll, Boolean lastenurk) {
         this.kohti = kohti;
         this.tsoon = tsoon;
-        this.privaatne = privaatne;
+        this.baariLahedal = baariLahedal;
         this.aknaAll = aknaAll;
         this.lastenurk = lastenurk;
     }
@@ -53,12 +53,12 @@ public class Laud {
         this.tsoon = tsoon;
     }
 
-    public Boolean isPrivaatne() {
-        return privaatne;
+    public Boolean isBaariLahedal() {
+        return baariLahedal;
     }
 
-    public void setPrivaatne(Boolean privaatne) {
-        this.privaatne = privaatne;
+    public void setBaariLahedal(Boolean baariLahedal) {
+        this.baariLahedal = baariLahedal;
     }
 
     public Boolean isAknaAll() {

@@ -17,12 +17,4 @@ public class LaudService {
     public List<Laud> getAll() {
         return laudRepository.findAll();
     }
-
-    public Laud getLaud(Long id) {
-        return laudRepository.findById(id).orElse(null);
-    }
-
-    public Laud addLaud(Laud laud) {
-        return laudRepository.save(laud);
-    }
 }

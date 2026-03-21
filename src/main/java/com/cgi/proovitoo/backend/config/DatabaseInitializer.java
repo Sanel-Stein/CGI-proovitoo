@@ -29,20 +29,20 @@ public class DatabaseInitializer implements CommandLineRunner {
             Laud l4 = new Laud(2, "terrass", false, true, false);
             Laud l5 = new Laud(4, "terrass", false, true, false);
             Laud l6 = new Laud(6, "terrass", false, true, false);
-            Laud l7 = new Laud(2, "terrass", false, true, false);
+            Laud l7 = new Laud(2, "terrass", true, true, false);
             Laud l8 = new Laud(2, "sisesaal", false, true, false);
             Laud l9 = new Laud(6, "sisesaal", false, true, false);
-            Laud l10 = new Laud(6, "sisesaal", false, false, false);
-            Laud l11 = new Laud(4, "sisesaal", false, false, false);
+            Laud l10 = new Laud(6, "sisesaal", true, false, false);
+            Laud l11 = new Laud(4, "sisesaal", true, false, false);
             Laud l12 = new Laud(8, "sisesaal", false, false, true);
-            Laud l13 = new Laud(4, "sisesaal", false, false, true);
-            Laud l14 = new Laud(2, "sisesaal", false, false, true);
+            Laud l13 = new Laud(4, "sisesaal", true, false, true);
+            Laud l14 = new Laud(2, "sisesaal", true, false, true);
             Laud l15 = new Laud(6, "privaatruum", true, false, false);
-            Laud l16 = new Laud(4, "privaatruum", true, false, false);
+            Laud l16 = new Laud(4, "privaatruum", false, false, false);
             Laud l17 = new Laud(2, "privaatruum", true, false, false);
-            Laud l18 = new Laud(6, "privaatruum", true, false, false);
-            Laud l19 = new Laud(6, "privaatruum", true, false, false);
-            Laud l20 = new Laud(8, "privaatruum", true, true, false);
+            Laud l18 = new Laud(6, "privaatruum", false, false, false);
+            Laud l19 = new Laud(6, "privaatruum", false, false, false);
+            Laud l20 = new Laud(8, "privaatruum", false, true, false);
 
 
             laudRepository.saveAll(List.of(

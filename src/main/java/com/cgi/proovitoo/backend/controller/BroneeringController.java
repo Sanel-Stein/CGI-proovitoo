@@ -16,16 +16,6 @@ public class BroneeringController {
         this.broneeringService = broneeringService;
     }
 
-    @GetMapping()
-    public List<Broneering> getAll() {
-        return broneeringService.getAll();
-    }
-
-    @GetMapping(value = "/{id}")
-    public Broneering getBroneering(@PathVariable Long id) {
-        return  broneeringService.getBroneering(id);
-    }
-
     @PostMapping()
     public Broneering addBroneering(@RequestBody Broneering broneering) {
         return broneeringService.addBroneering(broneering);

@@ -20,13 +20,4 @@ public class LaudController {
         return laudService.getAll();
     }
 
-    @GetMapping(value = "/{id}")
-    public Laud getLaud(@PathVariable Long id) {
-        return  laudService.getLaud(id);
-    }
-
-    @PostMapping()
-    public Laud addLaud(@RequestBody Laud laud) {
-        return  laudService.addLaud(laud);
-    }
 }

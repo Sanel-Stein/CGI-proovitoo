@@ -5,13 +5,19 @@ function Otsing({ otsinguInfo, setOtsinguInfo }) {
   const [aeg, setAeg] = useState("")
   const [inimesed, setInimesed] = useState("1")
   const [tsoon, setTsoon] = useState("")
-  const [privaatne, setPrivaatne] = useState(false)
+  const [baar, setBaar] = useState(false)
   const [aknaAll, setAknaAll] = useState(false)
   const [lastenurk, setLastenurk] = useState(false)
 
   const saadaInfo = (e) => {
     e.preventDefault();
-    setOtsinguInfo({ aeg, inimesed, tsoon, privaatne, aknaAll, lastenurk });
+    console.log(aeg)
+    console.log(new Date())
+    if (aeg < new Date().toLocaleString("sv-SE").replace(" ", "T").slice(0,16)) {
+      alert("Palun vali tulevane aeg!");
+      return;
+    }
+    setOtsinguInfo({ aeg, inimesed, tsoon, baar, aknaAll, lastenurk });
   }
 
   return (
@@ -40,7 +46,7 @@ function Otsing({ otsinguInfo, setOtsinguInfo }) {
               <option value="6">6</option>
               <option value="7">7</option>
               <option value="8">8</option>
-              </ select>
+              </select>
           </div>
           <div className="rida">
             <label htmlFor="tsoon">Tsoon </label>
@@ -55,9 +61,9 @@ function Otsing({ otsinguInfo, setOtsinguInfo }) {
           </div>
           <div className="rida">
             <label>
-              Privaatne <input type="checkbox" 
-                checked={privaatne}
-                onChange={(e) => setPrivaatne(e.target.checked)} />
+              Baari lähedal <input type="checkbox" 
+                checked={baar}
+                onChange={(e) => setBaar(e.target.checked)} />
             </label>
           </div>
           <div className="rida">
@@ -74,7 +80,7 @@ function Otsing({ otsinguInfo, setOtsinguInfo }) {
                 onChange={(e) => setLastenurk(e.target.checked)} />
             </label>
           </div>
-          <button type="submit">Otsi</button>
+          <button className="nupp" type="submit">Otsi</button>
         </form>
       </div>
     </div>

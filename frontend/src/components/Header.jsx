@@ -4,7 +4,7 @@ function Header() {
   return (
     <>
       <div className="header">
-        <h1>Tere tulemast restorani!</h1>
+        <h1>Broneeri laud</h1>
       </div>
     </>
   )

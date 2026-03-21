@@ -1,5 +1,10 @@
 .header {
     display: flex;
+    background-image: url('laud.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80px;
+    margin-top: 5px;
     background-color: rgb(104, 15, 15);
     padding: 10px;
     border-radius: 5px;

@@ -1,5 +1,6 @@
+import "./Broneering.css";
 import { addBroneering } from "../services/Api";
-import { useState } from "react";
+
 
 function Broneering({ broneering }) {
     if (broneering.aeg === "") {
@@ -29,16 +30,16 @@ function Broneering({ broneering }) {
 
 
     return (
-        <div className="broneerimguPaneel">
-            <h1>Broneering</h1>
+        <div className="broneeringuPaneel">
+            <h1>Broneeri laud:</h1>
             <p>Aeg: {broneering.aeg}</p>
             <p>Laua number: {broneering.lauaNr}</p>
             <p>Kohti: {broneering.kohti}</p>
             <p>Tsoon: {broneering.tsoon}</p>
-            <p>Privaatne: {broneering.privaatne ? "Jah" : "Ei"}</p>
+            <p>Baari lähedal: {broneering.baar ? "Jah" : "Ei"}</p>
             <p>Akna all: {broneering.aknaAll ? "Jah" : "Ei"}</p>
             <p>Lastenurk: {broneering.lastenurk ? "Jah" : "Ei"}</p>
-            <button onClick={salvestaBroneering}>Broneeri laud</button>
+            <button className="nupp" onClick={salvestaBroneering}>Broneeri</button>
         </div>
     )
 }

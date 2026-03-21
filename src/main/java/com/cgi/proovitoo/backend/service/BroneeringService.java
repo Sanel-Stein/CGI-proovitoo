@@ -16,14 +16,6 @@ public class BroneeringService {
         this.broneeringRepository = broneeringRepository;
     }
 
-    public List<Broneering> getAll() {
-        return broneeringRepository.findAll();
-    }
-
-    public Broneering getBroneering(Long id) {
-        return broneeringRepository.findById(id).orElse(null);
-    }
-
     public Broneering addBroneering(Broneering broneering) {
         return broneeringRepository.save(broneering);
     }
