@@ -1,4 +1,4 @@
-# CGI-proovitöö
+# CGI-proovitöö - Sanel Štein
 
 ## Rakenduse käivitamine
 Eeldused
