@@ -1,5 +1,33 @@
 # CGI-proovitöö
 
+## Rakenduse käivitamine
+Eeldused
+- Java 25
+- Node.js ja npm
+- PostgreSQL
+
+``git clone https://github.com/Sanel-Stein/CGI-proovitoo.git`` 
+
+``cd CGI-Proovitoo``
+
+application.properties failis muuta url, username ja password endale vastavaks.
+
+``.\gradlew.bat bootRun``
+
+backend töötab: http://localhost:8080
+
+``cd frontend``
+
+``npm install``
+
+``npm run dev``
+
+frontend töötab: http://localhost:5173
+
+
+## Rakenduse kirjeldus
+Rakenduse backend'iks on kasutatud SpringBoot'i ja frontend'iks React'i. Rakendus kasutab PostgreSQL andmebaasi, kuhu salvestatakse laudade ja broneeringute andmed. Esmalt näeb kasutaja laudade plaani ruudustikul ning otsingufiltreid. Sisestades broneeringuks sobivad andmed, kuvatakse plaanil roheliselt kõik vabad lauad, punaselt hõivatud ning kollaselt süsteemi arvates kõige sobilikum laud vastavalt inimeste arvule ja kasutaja eelistustele. Valides plaanil vaba laud ilmub ekraanil laua info ning sealt on võimalik vastav laud valitud kellaajaks broneerida. 
+
 ## 09.03.2026
 Alustasin projektiga. Kuna polnud varem Spring Boot'iga kokku puutunud, siis esmalt lugesin internetist selle kohta. Oma projekti eeskujuks võtsin cptdanko repositooriumi spring-boot-react-template (https://github.com/cptdanko/spring-boot-react-template). ~2h
 
@@ -21,5 +49,7 @@ Muutsin laudade soovitamise loogikat. Nüüd omistatakse vabadele laudadele skoo
 Kokku kulus tööle umbes 19 tundi. Kõige keerulisem oli front- ja backend'i suhtluse korraldamine ja lehe kujundamine. Abi sain põhiliselt w3school ja stackoverflow lehtedelt. AI abi kasutasin juhul kui mujalt abi ei leidnud ning kiirelt errorite lahendamiseks. 
 
 Piltide allikad: 
+
 icon.jpg: https://unsplash.com/illustrations/stylized-black-icon-of-a-hamburger-QO02sPd0HAk
+
 laud.jpg: https://unsplash.com/photos/brown-wooden-table-with-chairs-V2nhzJm-2FM
